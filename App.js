@@ -19,7 +19,7 @@ export default function App() {
           options={{ title: "Welcome" }}
         />
         <Stack.Screen name="add" component={AddLaptop} />
-        <Stack.Screen name="login" component={LaptopLogin} />
+        {/* <Stack.Screen name="login" component={LaptopLogin} /> */}
         <Stack.Screen name="search" component={SearchLaptop} />
         <Stack.Screen name="cart" component={CartStack} />
         <Stack.Screen name="ldetails" component={LaptopDetails} />

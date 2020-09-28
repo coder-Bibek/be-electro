@@ -10,11 +10,10 @@ import {
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import db from "./firebase";
-import firebase from "firebase";
 import ShowLaptop from "./ShowLaptop";
 import { ScrollView } from "react-native-gesture-handler";
 import EndStack from "./EndStack";
-import LaptopLogin from "./LaptopLogin";
+import { Button } from 'react-native-paper';
 function HomeScreen({navigation}){
   const[laptops,setLaptops]=useState([])
   useFocusEffect(
@@ -47,13 +46,24 @@ function HomeScreen({navigation}){
        })
        
   },[]);
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View style={styles.headervontainer}>
+         <Button mode={"outlined"}   onPress={()=>{navigation.navigate("add")}}>
+    Add Item
+  </Button>
+        </View>
+      ),
+    });
+  });
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Gracia</Text>
         <Text
           style={styles.headerText2}
-          onPress={() => navigation.navigate("login")}
+          onPress={() => navigation.navigate("add")}
         >
           Add-Item
         </Text>
@@ -97,6 +107,10 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "space-between",
     height: "14%",
+  },
+  headervontainer: {
+    right: 20,
+    borderRadius: 25,
   },
   headerText: {
     fontSize: 32,
